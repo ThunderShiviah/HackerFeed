@@ -16,10 +16,16 @@ class NewVisitorTest(unittest.TestCase):
         # I navigate to the site.
         self.browser.get('http://localhost:8000')
 
-        # I'm greeted by HackerFeed in the title bar
+        # I'm greeted by HackerFeed in the title bar     
+        self.assertIn('HackerFeed', self.browser.title)
         # and in the header.
 
-        # I look down to see a list of articles.
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('HackerFeed', header_text)
+
+        # Below the header I see a list of articles.
+        feed_list = self.browser.find_element_by_id('feed')
+        rows = feed_list.find_elements_by_tag_name('a')
         
         # Each article has the title
 
