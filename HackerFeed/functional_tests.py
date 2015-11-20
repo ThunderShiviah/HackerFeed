@@ -11,13 +11,14 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_start_a_list_and_retrieve_it_later(self):
+    def test_can_view_and_visit_list_of_articles(self):
 
         # I navigate to the site.
         self.browser.get('http://localhost:8000')
 
         # I'm greeted by HackerFeed in the title bar     
-        self.assertIn('HackerFeed', self.browser.title)
+        self.assertIn('HackerFeed', self.browser.title), 'HackerFeed not in browser title'
+
         # and in the header.
 
         header_text = self.browser.find_element_by_tag_name('h1').text
